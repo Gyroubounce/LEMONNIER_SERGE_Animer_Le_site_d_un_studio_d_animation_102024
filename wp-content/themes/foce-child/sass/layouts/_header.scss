@@ -1,0 +1,219 @@
+/* Styles généraux pour le header */
+
+/* Animation de montée */
+@keyframes linkFadeIn {
+    from {
+        transform: translateY(100px); /* Position de départ */
+    }
+    to {
+        transform: translateY(0); /* Position finale */
+    }
+}
+
+/* Animation de fade*/
+@keyframes fade {
+    from {
+        opacity: 0; /* Opacité initiale à 0 (invisible) */
+    }
+    to {
+        opacity: 1; /* Opacité finale à 1 (complètement visible) */
+    }
+}
+
+
+.top-banner {
+    position: sticky;
+    top: 0px;
+    z-index: 1000; /*le header est au-dessus des autres éléments */
+}
+
+.site-header {
+    position: relative;
+    background-color: #333; /* Couleur de fond du header */
+    padding: 0; /* Espacement intérieur du header */
+    color: #fff; /* Couleur du texte */
+    display: flex;
+    align-items: center; /* Alignement vertical */
+    justify-content: center; /* Centrer tous les éléments horizontalement */
+}
+
+/* Styles pour le conteneur de navigation */
+.main-navigation {
+    display: flex; /* Utiliser flexbox pour l'alignement */
+    align-items: center; /* Alignement vertical des éléments */
+    justify-content: space-between; /* Espacer le titre et le burger */
+    width: 100%; /* Prendre toute la largeur du header */
+    height: 80px;
+}
+
+/* Styles pour le titre du site */
+.site-title {
+    font-size: 22px; /* Taille du texte pour le titre */
+    color: #000000;
+    font-weight: bold;
+    flex-grow: 1; /* Permet au titre de prendre tout l'espace disponible */
+    text-align: center; /* Centrer le texte du titre */
+    padding-left: 20px;
+}
+
+/* Styles du bouton menu burger */
+.menu-toggle {
+    position: absolute; /* Positionner le bouton burger en absolu */
+    right: 120px; /* Éloigner le bouton du bord droit */
+    display: flex;
+    flex-direction: column; /* Aligner les lignes verticalement */
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Largeur du bouton */
+    height: 60px; /* Hauteur du bouton */
+    background-color: transparent; /* Rendre le fond transparent */
+    border: none; /* Retirer les bordures */
+    cursor: pointer;
+}
+
+/* Ajustement des lignes du burger */
+.menu-toggle .line {
+    background-color: #000; /* Couleur des lignes du burger */
+    display: block;
+    width: 100%; /* La ligne couvre la largeur du bouton */
+    height: 2px; /* Ajustez l'épaisseur des lignes */
+    margin: 4px 0; /* Espacement entre les lignes */
+    transition: all 0.3s ease; /* Pour les animations lors de la transformation */
+}
+
+/* Styles pour la transformation du bouton burger en croix */
+.menu-toggle.open .line:nth-child(1) {
+    transform: translateY(12px) rotate(45deg); /* Ligne supérieure se transforme */
+}
+
+.menu-toggle.open .line:nth-child(2) {
+    opacity: 0; /* Ligne du milieu disparaît */
+}
+
+.menu-toggle.open .line:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg); /* Ligne inférieure se transforme */
+}
+
+/* Menu full screen */
+.main-navigation ul {
+    display: none; /* Menu caché par défaut */
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFF5E9; /* Fond du menu */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    opacity: 0; /* Opacité initiale supprimée */
+}
+
+/* Affichage du menu lorsque le burger est ouvert */
+.main-navigation ul.open {
+    display: flex; /* Afficher le menu */
+    animation: fade 0.3s ease-in-out forwards; /* Applique l'animation fade */
+}
+
+/* Style des liens du menu */
+.main-navigation ul li {
+    text-align: center; /* Centre le texte des éléments de la liste */
+    overflow: hidden;
+}
+
+.main-navigation ul li a {
+    color: #000000; /* Couleur du texte des liens */
+    font-size: 64px; /* Taille des liens dans le menu */
+    font-weight: normal;
+    text-decoration: none; /* Enlever le soulignement par défaut */
+    transition: color 0.3s ease; /* Transition pour changement de couleur */
+    padding: 10px; /* Ajouter un peu de rembourrage pour rendre les liens plus cliquables */
+    display: block; /* Rendre le lien un bloc pour remplir l'espace du li */
+    text-align: center; /* Centre le texte du lien */
+}
+
+/* Ajouter un effet de survol pour les liens */
+.main-navigation ul li a:hover {
+    text-shadow:
+    0px 1px 2px #FF5C00,
+    0 0 0.2em #FF5C00;
+}
+
+/* Styles pour le logo */
+.main-navigation ul li.logo {
+    margin-bottom: 20px; /* Espacement en bas du logo */
+    text-align: center; /* Centrer le logo */
+}
+
+/* Styles pour le dernier élément du menu */
+.main-navigation ul li.footer-item {
+    margin-bottom: 20px; /* Laisse l'espace pour le haut */
+    margin-top: 100px;
+    text-align: center; /* Centrer le texte */
+    font-weight: normal; /* Mettre en gras le texte */
+    font-size: 16px; /* Taille de la police pour le footer */
+    color: #000000; /* Couleur du texte du footer */
+}
+
+/* Styles pour les liens avec animation */
+.link {
+    display: inline-block; /* Permet le contrôle des animations */
+    transform: translateY(100px); /* Position de départ (déplacé vers le bas) */
+    transition: transform 0.8s ease-in-out; /* Transition pour l'animation */
+
+}
+
+/* Ajouter une classe pour animer les liens */
+.link.slideIn {
+    animation: linkFadeIn 0.8s forwards; /* Animation de montée */
+}
+
+.no-scroll {
+    overflow: hidden; /* Désactive le défilement */
+}
+
+/* Responsivité pour les écrans moyens */
+@media (max-width: 920px) {
+    .no-scroll {
+        overflow: hidden; /* Désactive le défilement */
+        height: 100%; /* Assurez-vous que la hauteur soit maintenue */
+    }
+    .site-title {
+        font-size: 20px !important; /* Taille du texte pour le titre */
+    }   
+
+    .main-navigation ul {
+      justify-content: start;
+    }
+
+    .main-navigation ul li {
+        line-height: 1;
+    }
+
+    .main-navigation ul li.logo {
+        padding: 0 !important; /* Espacement en bas du logo */
+    }
+
+    .main-navigation ul li a {
+        font-size: 38px !important; /* Taille des liens dans le menu */
+        padding: 5px;
+    }
+    .main-navigation ul li.footer-item {
+        margin-top: 20px;
+    }
+}
+
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+    
+    .site-title {
+        font-size: 16px !important; /* Taille du texte pour le titre */
+    }   
+    
+    .main-navigation ul li a {
+        font-size: 34px; /* Taille des liens dans le menu */
+    }
+
+}

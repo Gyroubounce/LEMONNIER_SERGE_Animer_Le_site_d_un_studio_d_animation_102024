@@ -1,0 +1,132 @@
+// Animation de rotation infinie
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Animation de flottement multidirectionnelle
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px); /* Position de départ */
+  }
+  25% {
+    transform: translate(5px, -5px); /* Légère translation vers la droite et vers le haut */
+  }
+  50% {
+    transform: translate(-10px, 10px); /* Légère translation vers la gauche et vers le bas */
+  }
+  75% {
+    transform: translate(10px, 10px); /* Légère translation vers la droite et vers le bas */
+  }
+  100% {
+    transform: translate(0px, 0px); /* Retour à la position de départ */
+  }
+}
+
+// Styles généraux pour les sections
+section {
+  opacity: 0; // Invisible au départ
+  transform: translateY(50px); // Déplace vers le haut
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; // Animation de fade-in 
+
+  &.visible {
+    opacity: 1; // Rendre visible
+    transform: translateY(0); // Retourne à la position normale
+  }
+}
+
+// Styles pour la bannière
+.banner {
+  width: auto;
+  transform: translateY(-50px); // Déplace vers le haut
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; // Animation de fade-in 
+
+  // Styles pour la vidéo
+  .video-container {
+    position: absolute; // Fixe la vidéo dans la bannière
+    top: 0; // Positionne la vidéo en haut de la section
+    left: 0; // Positionne la vidéo à gauche
+    width: 100%; // Couvre la largeur de la bannière
+    height: 100%; // Couvre la hauteur de la bannière
+    overflow: hidden; // Masque tout débordement de la vidéo
+
+    video {
+      width: 100%; // Assure que la vidéo couvre toute la largeur
+      height: 100%; // Assure que la vidéo couvre toute la hauteur
+      object-fit: cover; // Couvre la section sans déformation
+    }
+  }
+
+  
+  // Styles pour l'image
+  .image-container {
+    position: relative; // Positionne l'image par rapport à la bannière
+    z-index: 2; // Assure que le logo est au-dessus de la vidéo
+
+    img {
+      width: auto; // Largeur automatique
+      position: relative; // Assure que le logo se positionne correctement
+      display: flex; // Utilisation de flexbox pour centrer
+      justify-content: center; // Centre horizontalement
+      align-items: center; // Centre verticalement
+      transform: translateY(100px); // Déplace le logo vers le bas au départ
+      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; // Animation de transition
+
+      &.visible {
+        opacity: 1; // Rendre le logo visible
+        transform: translateY(0px); // Fait monter le logo vers le haut
+      }
+
+      &.floating {
+        animation: float 4s ease-in-out infinite; // Appliquer l'animation de flottement
+      }
+    }
+  }
+}
+
+
+/* Styles pour le logo spécifiquement */
+.logo-image {
+  transition: transform 0.2s ease; /* Pour une animation fluide */
+}
+
+
+
+
+
+// Styles pour les titres dans la section .story
+.story {
+  h2,
+  &__article {
+    &::after {
+      animation: rotate 20s linear infinite; // temps de rotation à 20s
+    }
+  }
+}
+
+// Styles pour le #studio
+#studio {
+  h2 {
+    &::before,
+    &::after {
+      animation: rotate 20s linear infinite; // temps de rotation à 20s
+    }
+  }
+}
+
+
+
+// Masquer la vidéo sur mobile
+@media (max-width: 768px) {
+  .video-container {
+    display: none; // Masquer la vidéo sur mobile
+  }
+  .banner .image-container img.floating {
+    animation: none;
+  }
+}
+

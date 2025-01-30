@@ -1,0 +1,54 @@
+.swiper {
+  width: 1440px; /* Prend 100% de la largeur disponible */
+  height: 400px; /* Ajuster la hauteur du slider selon vos besoins */
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: -100px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Chaque slide s'adapte en fonction de son contenu */
+    max-width: 400px; /* Augmenter la taille maximale des slides si nécessaire */
+    height: 400px; /* Les slides prennent la hauteur définie pour le swiper */
+    padding-right: 150px;
+
+    img {
+      max-width: 400px; /* L'image ne dépasse pas la largeur de son parent */
+      height: 400px; /* Ajuste la hauteur des images selon vos besoins */
+      object-fit: contain; /* Garde les proportions de l'image */
+      margin-left: 15px;
+    }
+
+    .swiper-slide-title {
+      font-size: 20px;
+      text-align: center;
+      font-weight: normal;
+      color: #333;
+      height: 10%; /* Le titre occupe 10% de la hauteur */
+    }
+  }
+}
+
+#characters {
+  .main-character {
+    h3 {
+      background-position: 1em;
+      text-align: left; /* Aligne le texte à gauche */
+      margin-left: 5.8%;
+    }
+  }
+}
+
+@media (max-width: 1024px) { /* Ajustez la largeur selon vos besoins */
+  h3 {
+    text-align: center !important;
+    background-position: center !important;
+    margin-left: 0 !important;
+  }
+}

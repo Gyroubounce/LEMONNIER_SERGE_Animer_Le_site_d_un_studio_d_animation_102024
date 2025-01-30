@@ -1,0 +1,69 @@
+.title-container {
+  position: relative;
+  overflow: hidden; /* Masque le texte qui déborde */
+}
+
+.title-text {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(80px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.5s ease-in-out; /* Transition pour l'animation */
+  opacity: 0; /* Texte initialement invisible */
+
+  /* Ajout de la classe pour animer l'élément */
+  &.slideUp {
+      animation: fadeInUp 0.5s forwards;
+  }
+}
+
+.title-text-h3 {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(80px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.5s ease-in-out; /* Transition pour l'animation */
+  opacity: 0; /* Texte initialement invisible */
+
+  /* Ajout de la classe pour animer l'élément */
+  &.slideUp {
+      animation: fadeInUp 0.5s forwards;
+  }
+}
+
+/* Animation de montée */
+@keyframes fadeInUp {
+  from {
+      transform: translateY(80px); /* Position de départ */
+      opacity: 0; /* Début invisible */
+  }
+  to {
+      transform: translateY(0); /* Position finale */
+      opacity: 1; /* Visible à la fin */
+  }
+}
+
+.title-container1 {
+  position: relative;
+  overflow: hidden; /* Masque le texte qui déborde */
+}
+
+.title-text1 {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(180px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.5s ease-in-out; /* Transition pour l'animation */
+  opacity: 0; /* Texte initialement invisible */
+
+  /* Ajout de la classe pour animer l'élément */
+  &.growUp {
+      animation: growUp 0.5s forwards;
+  }
+}
+
+/* Animation de montée pour growUp */
+@keyframes growUp {
+  from {
+      transform: translateY(180px); /* Position de départ */
+      opacity: 0; /* Début invisible */
+  }
+  to {
+      transform: translateY(0); /* Position finale */
+      opacity: 1; /* Visible à la fin */
+  }
+}

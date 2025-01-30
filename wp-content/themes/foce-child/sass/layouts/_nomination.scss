@@ -1,0 +1,117 @@
+// Section Nomination
+
+// Animation de rotation infinie
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#nomination {
+  padding-top: 4em;
+  padding-bottom: 1em;
+  position: relative;
+
+  .fleur.sunflower {
+    background-image: url("../assets/images/Sunflower.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotate 20s linear infinite;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+    left: 120px;
+  }
+
+  .fleur.orchid {
+    background-image: url("../assets/images/orchid.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotate 20s linear infinite;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: -20px;
+    right: -65px;
+  }
+
+  .content {
+    display: flex;
+    width: 75%;
+    margin-left: 12%;
+    margin-top: 1em;
+
+    .text-container {
+      display: flex;
+      align-items: center;
+
+      h2 {
+        color: $color__background-body;
+        background-image: url("../assets/images/Rectangle_23.png");
+        line-height: 1.3em;
+        padding: 2em 1.5em;
+        font-size: 42px;
+        text-align: left;
+        margin-top: 1em;
+        text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.24);
+      }
+
+      .title-container1 {
+
+        span {
+          display: block;
+        }
+        .image-container {
+          margin-left: 10px;
+  
+          img {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  #nomination {
+    .fleur.sunflower {
+      left: 90px;
+    }
+    .content .text-container h2 {
+      font-size: 2.5rem !important; // Ajuste la taille du texte pour écran plus petit
+      padding-top: 70px;
+    }
+  }
+}
+
+
+@media (max-width: 1280px) {
+  #nomination {
+    .fleur.sunflower {
+      left: auto;
+    }
+    .content .text-container h2 {
+      font-size: 1.8rem !important; // Ajuste la taille du texte pour écran plus petit
+      padding-top: 60px;
+    }
+  }
+}
+
+// Media query pour cacher les fleurs sur petits écrans
+@media (max-width: 920px) {
+  #nomination {
+    display: none; 
+  }
+}
+
+// Pour les tablettes et mobiles
+@media (max-width: 700px) {
+  #nomination {
+    display: none; 
+  }
+}

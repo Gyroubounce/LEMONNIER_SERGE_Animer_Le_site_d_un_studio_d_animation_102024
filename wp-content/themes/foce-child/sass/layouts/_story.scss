@@ -1,0 +1,46 @@
+.story #place {
+    position: relative; // Assurez-vous que le conteneur est positionné
+    background-image: url('/wp-content/themes/foce-child/assets/images/Studio_Koukaki-image_place.png');
+    overflow: hidden; // Pour masquer les débordements
+    background-size: cover; // Couvre toute la section
+    background-position: center; // Centre l'image de fond
+    background-repeat: no-repeat; // Empêche la répétition de l'image
+
+    .cloud-container {
+        position: absolute; // Positionner le conteneur de nuages
+        top: 70px; // Ajustez selon vos besoins
+        right: 100px; // Commence à droite de l'écran
+        width: 300px; // Largeur totale pour les nuages
+        height: 150px; // Ajustez selon vos besoins
+
+        .cloud {
+            position: absolute; // Positionner chaque nuage
+            opacity: 1; // Assurez-vous que les nuages sont visibles
+            transition: transform 1s ease; // Transition pour le mouvement
+
+            // Image de fond pour le premier nuage
+            &.cloud1 {
+                background-image: url('/wp-content/themes/foce-child/assets/images/little_cloud.png');
+                background-size: contain; // Assure que l'image est bien contenue
+                background-repeat: no-repeat; // Empêche la répétition
+                width: 150px; // Largeur de chaque nuage
+                height: 100px; // Ajustez la hauteur du nuage
+                top: 180px; // Ajustez la position verticale si nécessaire
+                right: 400px; // Positionne le nuage à droite
+                filter: blur(12px);
+            }
+
+            // Image de fond pour le deuxième nuage
+            &.cloud2 {
+                background-image: url('/wp-content/themes/foce-child/assets/images/big_cloud.png');
+                background-size: contain; // Assure que l'image est bien contenue
+                background-repeat: no-repeat; // Empêche la répétition
+                width: 300px; // Largeur de chaque nuage
+                height: 200px; // Ajustez la hauteur du nuage
+                top: 0px; // Ajustez la position verticale si nécessaire
+                right: 0px; // Positionne le nuage à droite
+                filter: blur(12px);
+            }
+        }
+    }
+}

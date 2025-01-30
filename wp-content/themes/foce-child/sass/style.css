@@ -1,0 +1,718 @@
+@charset "UTF-8";
+/* Styles généraux pour le header */
+/* Animation de montée */
+@keyframes linkFadeIn {
+  from {
+    transform: translateY(100px); /* Position de départ */
+  }
+  to {
+    transform: translateY(0); /* Position finale */
+  }
+}
+/* Animation de fade*/
+@keyframes fade {
+  from {
+    opacity: 0; /* Opacité initiale à 0 (invisible) */
+  }
+  to {
+    opacity: 1; /* Opacité finale à 1 (complètement visible) */
+  }
+}
+.top-banner {
+  position: sticky;
+  top: 0px;
+  z-index: 1000; /*le header est au-dessus des autres éléments */
+}
+
+.site-header {
+  position: relative;
+  background-color: #333; /* Couleur de fond du header */
+  padding: 0; /* Espacement intérieur du header */
+  color: #fff; /* Couleur du texte */
+  display: flex;
+  align-items: center; /* Alignement vertical */
+  justify-content: center; /* Centrer tous les éléments horizontalement */
+}
+
+/* Styles pour le conteneur de navigation */
+.main-navigation {
+  display: flex; /* Utiliser flexbox pour l'alignement */
+  align-items: center; /* Alignement vertical des éléments */
+  justify-content: space-between; /* Espacer le titre et le burger */
+  width: 100%; /* Prendre toute la largeur du header */
+  height: 80px;
+}
+
+/* Styles pour le titre du site */
+.site-title {
+  font-size: 22px; /* Taille du texte pour le titre */
+  color: #000000;
+  font-weight: bold;
+  flex-grow: 1; /* Permet au titre de prendre tout l'espace disponible */
+  text-align: center; /* Centrer le texte du titre */
+  padding-left: 20px;
+}
+
+/* Styles du bouton menu burger */
+.menu-toggle {
+  position: absolute; /* Positionner le bouton burger en absolu */
+  right: 120px; /* Éloigner le bouton du bord droit */
+  display: flex;
+  flex-direction: column; /* Aligner les lignes verticalement */
+  justify-content: center;
+  align-items: center;
+  width: 60px; /* Largeur du bouton */
+  height: 60px; /* Hauteur du bouton */
+  background-color: transparent; /* Rendre le fond transparent */
+  border: none; /* Retirer les bordures */
+  cursor: pointer;
+}
+
+/* Ajustement des lignes du burger */
+.menu-toggle .line {
+  background-color: #000; /* Couleur des lignes du burger */
+  display: block;
+  width: 100%; /* La ligne couvre la largeur du bouton */
+  height: 2px; /* Ajustez l'épaisseur des lignes */
+  margin: 4px 0; /* Espacement entre les lignes */
+  transition: all 0.3s ease; /* Pour les animations lors de la transformation */
+}
+
+/* Styles pour la transformation du bouton burger en croix */
+.menu-toggle.open .line:nth-child(1) {
+  transform: translateY(12px) rotate(45deg); /* Ligne supérieure se transforme */
+}
+
+.menu-toggle.open .line:nth-child(2) {
+  opacity: 0; /* Ligne du milieu disparaît */
+}
+
+.menu-toggle.open .line:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg); /* Ligne inférieure se transforme */
+}
+
+/* Menu full screen */
+.main-navigation ul {
+  display: none; /* Menu caché par défaut */
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFF5E9; /* Fond du menu */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+  opacity: 0; /* Opacité initiale supprimée */
+}
+
+/* Affichage du menu lorsque le burger est ouvert */
+.main-navigation ul.open {
+  display: flex; /* Afficher le menu */
+  animation: fade 0.3s ease-in-out forwards; /* Applique l'animation fade */
+}
+
+/* Style des liens du menu */
+.main-navigation ul li {
+  text-align: center; /* Centre le texte des éléments de la liste */
+  overflow: hidden;
+}
+
+.main-navigation ul li a {
+  color: #000000; /* Couleur du texte des liens */
+  font-size: 64px; /* Taille des liens dans le menu */
+  font-weight: normal;
+  text-decoration: none; /* Enlever le soulignement par défaut */
+  transition: color 0.3s ease; /* Transition pour changement de couleur */
+  padding: 10px; /* Ajouter un peu de rembourrage pour rendre les liens plus cliquables */
+  display: block; /* Rendre le lien un bloc pour remplir l'espace du li */
+  text-align: center; /* Centre le texte du lien */
+}
+
+/* Ajouter un effet de survol pour les liens */
+.main-navigation ul li a:hover {
+  text-shadow: 0px 1px 2px #FF5C00, 0 0 0.2em #FF5C00;
+}
+
+/* Styles pour le logo */
+.main-navigation ul li.logo {
+  margin-bottom: 20px; /* Espacement en bas du logo */
+  text-align: center; /* Centrer le logo */
+}
+
+/* Styles pour le dernier élément du menu */
+.main-navigation ul li.footer-item {
+  margin-bottom: 20px; /* Laisse l'espace pour le haut */
+  margin-top: 100px;
+  text-align: center; /* Centrer le texte */
+  font-weight: normal; /* Mettre en gras le texte */
+  font-size: 16px; /* Taille de la police pour le footer */
+  color: #000000; /* Couleur du texte du footer */
+}
+
+/* Styles pour les liens avec animation */
+.link {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(100px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.8s ease-in-out; /* Transition pour l'animation */
+}
+
+/* Ajouter une classe pour animer les liens */
+.link.slideIn {
+  animation: linkFadeIn 0.8s forwards; /* Animation de montée */
+}
+
+.no-scroll {
+  overflow: hidden; /* Désactive le défilement */
+}
+
+/* Responsivité pour les écrans moyens */
+@media (max-width: 920px) {
+  .no-scroll {
+    overflow: hidden; /* Désactive le défilement */
+    height: 100%; /* Assurez-vous que la hauteur soit maintenue */
+  }
+  .site-title {
+    font-size: 20px !important; /* Taille du texte pour le titre */
+  }
+  .main-navigation ul {
+    justify-content: start;
+  }
+  .main-navigation ul li {
+    line-height: 1;
+  }
+  .main-navigation ul li.logo {
+    padding: 0 !important; /* Espacement en bas du logo */
+  }
+  .main-navigation ul li a {
+    font-size: 38px !important; /* Taille des liens dans le menu */
+    padding: 5px;
+  }
+  .main-navigation ul li.footer-item {
+    margin-top: 20px;
+  }
+}
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 16px !important; /* Taille du texte pour le titre */
+  }
+  .main-navigation ul li a {
+    font-size: 34px; /* Taille des liens dans le menu */
+  }
+}
+.image-gauche {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: auto;
+  top: 80px;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0s ease;
+}
+.image-gauche .Orchid {
+  background-image: url("../assets/images/orchid.png");
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 80px;
+  left: -50px;
+  animation: rotate 20s linear infinite;
+}
+.image-gauche .Kawaneko {
+  background-image: url("../assets/images/Kawaneko.png");
+  top: 200px;
+  left: 220px;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  animation: float 6s linear infinite;
+}
+.image-gauche .flower {
+  background-image: url("../assets/images/flower.png");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 450px;
+  left: 180px;
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  animation: rotate 20s linear infinite;
+}
+.image-gauche .Orenjiiro {
+  background-image: url("../assets/images/Orenjiiro.png");
+  top: 700px;
+  left: 80px;
+  width: 110px;
+  height: 90px;
+  position: absolute;
+  animation: float 10s linear infinite;
+}
+
+.image-droite {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100px;
+  height: auto;
+  top: 80px;
+  right: 0px;
+  opacity: 0;
+  transition: opacity 0s ease;
+}
+.image-droite .SunFlower {
+  background-image: url("../assets/images/Sunflower.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  animation: rotate 20s linear infinite;
+}
+.image-droite .random_flower {
+  background-image: url("../assets/images/random_flower.png");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+  top: 320px;
+  right: -100px;
+  position: absolute;
+  animation: rotate 20s linear infinite;
+}
+.image-droite .Jaakuna {
+  background-image: url("../assets/images/Jaakuna.png");
+  width: 130px;
+  height: 130px;
+  top: 480px;
+  right: 100px;
+  position: absolute;
+  animation: float 8s linear infinite;
+}
+.image-droite .Hibiscus {
+  background-image: url("../assets/images/Hibiscus.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 300px;
+  height: 300px;
+  top: 750px;
+  right: -100px;
+  position: absolute;
+  animation: rotate 20s linear infinite;
+}
+
+.image-gauche.open,
+.image-droite.open {
+  z-index: 1000; /* Un z-index supérieur à celui du menu */
+  animation: fade 0.3s ease-in-out forwards; /* Applique l'animation fade */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media (max-width: 980px) {
+  .image-droite,
+  .image-gauche {
+    display: none;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px); /* Position de départ */
+  }
+  25% {
+    transform: translate(5px, -5px); /* Légère translation vers la droite et vers le haut */
+  }
+  50% {
+    transform: translate(-10px, 10px); /* Légère translation vers la gauche et vers le bas */
+  }
+  75% {
+    transform: translate(10px, 10px); /* Légère translation vers la droite et vers le bas */
+  }
+  100% {
+    transform: translate(0px, 0px); /* Retour à la position de départ */
+  }
+}
+section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.banner {
+  width: auto;
+  transform: translateY(-50px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+.banner .video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.banner .video-container video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.banner .image-container {
+  position: relative;
+  z-index: 2;
+}
+.banner .image-container img {
+  width: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(100px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+.banner .image-container img.visible {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.banner .image-container img.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Styles pour le logo spécifiquement */
+.logo-image {
+  transition: transform 0.2s ease; /* Pour une animation fluide */
+}
+
+.story h2::after, .story__article::after {
+  animation: rotate 20s linear infinite;
+}
+
+#studio h2::before, #studio h2::after {
+  animation: rotate 20s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    display: none;
+  }
+  .banner .image-container img.floating {
+    animation: none;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#nomination {
+  padding-top: 4em;
+  padding-bottom: 1em;
+  position: relative;
+}
+#nomination .fleur.sunflower {
+  background-image: url("../assets/images/Sunflower.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: rotate 20s linear infinite;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 50px;
+  left: 120px;
+}
+#nomination .fleur.orchid {
+  background-image: url("../assets/images/orchid.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: rotate 20s linear infinite;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: -20px;
+  right: -65px;
+}
+#nomination .content {
+  display: flex;
+  width: 75%;
+  margin-left: 12%;
+  margin-top: 1em;
+}
+#nomination .content .text-container {
+  display: flex;
+  align-items: center;
+}
+#nomination .content .text-container h2 {
+  color: #FFF5E9;
+  background-image: url("../assets/images/Rectangle_23.png");
+  line-height: 1.3em;
+  padding: 2em 1.5em;
+  font-size: 42px;
+  text-align: left;
+  margin-top: 1em;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.24);
+}
+#nomination .content .text-container .title-container1 span {
+  display: block;
+}
+#nomination .content .text-container .title-container1 .image-container {
+  margin-left: 10px;
+}
+#nomination .content .text-container .title-container1 .image-container img {
+  margin-left: 10px;
+}
+
+@media (max-width: 1440px) {
+  #nomination .fleur.sunflower {
+    left: 90px;
+  }
+  #nomination .content .text-container h2 {
+    font-size: 2.5rem !important;
+    padding-top: 70px;
+  }
+}
+@media (max-width: 1280px) {
+  #nomination .fleur.sunflower {
+    left: auto;
+  }
+  #nomination .content .text-container h2 {
+    font-size: 1.8rem !important;
+    padding-top: 60px;
+  }
+}
+@media (max-width: 920px) {
+  #nomination {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  #nomination {
+    display: none;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.site-footer::before {
+  content: "";
+}
+.site-footer::after {
+  content: "";
+}
+.site-footer ul::after {
+  animation: rotate 20s linear infinite;
+}
+
+footer {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer p {
+  transform: none;
+  opacity: 1;
+  transition: none;
+}
+
+.title-container {
+  position: relative;
+  overflow: hidden; /* Masque le texte qui déborde */
+}
+
+.title-text {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(80px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.5s ease-in-out; /* Transition pour l'animation */
+  opacity: 0; /* Texte initialement invisible */
+  /* Ajout de la classe pour animer l'élément */
+}
+.title-text.slideUp {
+  animation: fadeInUp 0.5s forwards;
+}
+
+.title-text-h3 {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(80px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.5s ease-in-out; /* Transition pour l'animation */
+  opacity: 0; /* Texte initialement invisible */
+  /* Ajout de la classe pour animer l'élément */
+}
+.title-text-h3.slideUp {
+  animation: fadeInUp 0.5s forwards;
+}
+
+/* Animation de montée */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(80px); /* Position de départ */
+    opacity: 0; /* Début invisible */
+  }
+  to {
+    transform: translateY(0); /* Position finale */
+    opacity: 1; /* Visible à la fin */
+  }
+}
+.title-container1 {
+  position: relative;
+  overflow: hidden; /* Masque le texte qui déborde */
+}
+
+.title-text1 {
+  display: inline-block; /* Permet le contrôle des animations */
+  transform: translateY(180px); /* Position de départ (déplacé vers le bas) */
+  transition: transform 0.5s ease-in-out; /* Transition pour l'animation */
+  opacity: 0; /* Texte initialement invisible */
+  /* Ajout de la classe pour animer l'élément */
+}
+.title-text1.growUp {
+  animation: growUp 0.5s forwards;
+}
+
+/* Animation de montée pour growUp */
+@keyframes growUp {
+  from {
+    transform: translateY(180px); /* Position de départ */
+    opacity: 0; /* Début invisible */
+  }
+  to {
+    transform: translateY(0); /* Position finale */
+    opacity: 1; /* Visible à la fin */
+  }
+}
+.swiper {
+  width: 1440px; /* Prend 100% de la largeur disponible */
+  height: 400px; /* Ajuster la hauteur du slider selon vos besoins */
+}
+.swiper .swiper-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: -100px;
+}
+.swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px; /* Chaque slide s'adapte en fonction de son contenu */
+  max-width: 400px; /* Augmenter la taille maximale des slides si nécessaire */
+  height: 400px; /* Les slides prennent la hauteur définie pour le swiper */
+  padding-right: 150px;
+}
+.swiper .swiper-slide img {
+  max-width: 400px; /* L'image ne dépasse pas la largeur de son parent */
+  height: 400px; /* Ajuste la hauteur des images selon vos besoins */
+  -o-object-fit: contain;
+     object-fit: contain; /* Garde les proportions de l'image */
+  margin-left: 15px;
+}
+.swiper .swiper-slide .swiper-slide-title {
+  font-size: 20px;
+  text-align: center;
+  font-weight: normal;
+  color: #333;
+  height: 10%; /* Le titre occupe 10% de la hauteur */
+}
+
+#characters .main-character h3 {
+  background-position: 1em;
+  text-align: left; /* Aligne le texte à gauche */
+  margin-left: 5.8%;
+}
+
+@media (max-width: 1024px) { /* Ajustez la largeur selon vos besoins */
+  h3 {
+    text-align: center !important;
+    background-position: center !important;
+    margin-left: 0 !important;
+  }
+}
+.story #place {
+  position: relative;
+  background-image: url("/wp-content/themes/foce-child/assets/images/Studio_Koukaki-image_place.png");
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.story #place .cloud-container {
+  position: absolute;
+  top: 70px;
+  right: 100px;
+  width: 300px;
+  height: 150px;
+}
+.story #place .cloud-container .cloud {
+  position: absolute;
+  opacity: 1;
+  transition: transform 1s ease;
+}
+.story #place .cloud-container .cloud.cloud1 {
+  background-image: url("/wp-content/themes/foce-child/assets/images/little_cloud.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 100px;
+  top: 180px;
+  right: 400px;
+  filter: blur(12px);
+}
+.story #place .cloud-container .cloud.cloud2 {
+  background-image: url("/wp-content/themes/foce-child/assets/images/big_cloud.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 200px;
+  top: 0px;
+  right: 0px;
+  filter: blur(12px);
+}/*# sourceMappingURL=style.css.map */

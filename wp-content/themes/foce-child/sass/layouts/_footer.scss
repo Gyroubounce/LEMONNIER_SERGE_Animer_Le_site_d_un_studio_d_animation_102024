@@ -1,0 +1,47 @@
+// Animation de rotation infinie pour l'hibiscus
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.site-footer {
+
+  &::before {
+    content: '';
+   }
+  &::after {
+    content: '';
+
+  }
+  ul {
+  &::after {
+      animation: rotate 20s linear infinite; // temps de rotation à 20s
+      }
+  }
+}
+
+
+// Animation pour le fading et la montée pour le footer
+footer {
+  opacity: 0; // Invisible au départ
+  transform: translateY(50px); // Déplacé 50px vers le bas
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; // Animation de fade-in et montée
+
+  // Ajout de la classe visible pour déclencher l'animation
+  &.visible {
+    opacity: 1; // Rend visible
+    transform: translateY(0); // Retourne à la position normale
+  }
+}
+
+// Empêche la translation et l'opacité sur les balises <p> du footer
+footer p {
+  transform: none; // Pas de transformation
+  opacity: 1; // Toujours visible
+  transition: none; // Pas d'animation
+}
+

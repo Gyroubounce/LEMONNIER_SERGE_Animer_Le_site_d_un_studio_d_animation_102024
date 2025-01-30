@@ -1,0 +1,161 @@
+// Styles pour l'image de gauche
+.image-gauche {
+    display: flex; // Aligne les enfants horizontalement
+    flex-direction: column; // Aligne les éléments verticalement
+    width: 100px; // Ajustez la largeur selon vos besoins
+    height: auto; // Permet à la hauteur d'ajuster selon le contenu
+    top: 80px;
+    left: 0;
+    position: absolute;
+    opacity: 0; // Caché par défaut
+    transition: opacity 0s ease; // Transition douce pour l'opacité
+
+    // Images pour la colonne de gauche
+    .Orchid {
+        background-image: url("../assets/images/orchid.png");
+        background-size: cover;
+        width: 150px;
+        height: 150px; // Peut être ajusté selon vos besoins
+        position: absolute;
+        top: 80px;
+        left: -50px; // Position à gauche
+        animation: rotate 20s linear infinite; // Animation de rotation
+    }
+
+    .Kawaneko {
+        background-image: url("../assets/images/Kawaneko.png");
+        top: 200px;
+        left: 220px; // Position à gauche
+        width: 120px; // Ajustez la largeur selon vos besoins
+        height: 120px; // Ajustez la hauteur selon vos besoins
+        position: absolute; // Position absolue
+        animation: float 6s linear infinite; // Animation de flottement
+    }
+
+    .flower {
+        background-image: url("../assets/images/flower.png");
+        background-size: 50%; // Ajuste la taille de l'image d'arrière-plan à 50%
+        background-repeat: no-repeat; // Empêche la répétition de l'image
+        background-position: center; // Centre l'image d'arrière-plan dans l'élément
+        top: 450px; // Position en haut
+        left: 180px; // Position à gauche
+        width: 110px; // Ajustez la largeur selon vos besoins
+        height: 110px; // Ajustez la hauteur selon vos besoins
+        position: absolute; // Position absolue
+        animation: rotate 20s linear infinite; // Animation de rotation
+    }
+    
+    .Orenjiiro {
+        background-image: url("../assets/images/Orenjiiro.png");
+        top: 700px;
+        left: 80px; // Position à gauche
+        width: 110px; // Ajustez la largeur selon vos besoins
+        height: 90px; // Ajustez la hauteur selon vos besoins
+        position: absolute; // Position absolue
+        animation: float 10s linear infinite; // Animation de flottement
+    }
+}
+
+// Styles pour l'image de droite
+.image-droite {
+    display: flex; // Aligne les enfants horizontalement
+    flex-direction: column; // Aligne les éléments verticalement
+    position: absolute; // Position relative pour les éléments enfants
+    width: 100px; // Ajustez la largeur selon vos besoins
+    height: auto; // Permet à la hauteur d'ajuster selon le contenu
+    top: 80px;
+    right: 0px;
+    opacity: 0; // Caché par défaut
+    transition: opacity 0s ease; // Transition douce pour l'opacité
+
+    // Images pour la colonne de droite
+    .SunFlower {
+        background-image: url("../assets/images/Sunflower.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 200px;
+        height: 200px; // Peut être ajusté selon vos besoins
+        position: absolute;
+        top: 100px;
+        right: 50px; // Position à droite
+        animation: rotate 20s linear infinite; // Animation de rotation
+    }
+
+    .random_flower {
+        background-image: url("../assets/images/random_flower.png");
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 200px;
+        height: 200px; // Peut être ajusté selon vos besoins
+        top: 320px;
+        right: -100px; // Position à droite
+        position: absolute; // Position absolue
+        animation: rotate 20s linear infinite; // Animation de rotation
+    }
+
+    .Jaakuna {
+        background-image: url("../assets/images/Jaakuna.png");
+        width: 130px;
+        height: 130px; // Peut être ajusté selon vos besoins
+        top: 480px;
+        right: 100px; // Position à droite
+        position: absolute; // Position absolue
+        animation: float 8s linear infinite; // Animation de flottement
+    }
+
+    .Hibiscus {
+        background-image: url("../assets/images/Hibiscus.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        width: 300px;
+        height: 300px; // Peut être ajusté selon vos besoins
+        top: 750px;
+        right: -100px; // Position à droite
+        position: absolute; // Position absolue
+        animation: rotate 20s linear infinite; // Animation de rotation
+    }
+}
+
+
+.image-gauche.open,
+.image-droite.open {
+    z-index: 1000; /* Un z-index supérieur à celui du menu */
+    animation: fade 0.3s ease-in-out forwards; /* Applique l'animation fade */
+}
+
+// Animation de rotation
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// Animation de flottement
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); // Flottement vers le haut
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+// Media query pour cacher les fleurs sur petits écrans
+@media (max-width: 980px) {
+    .image-droite,
+    .image-gauche {
+      display: none; 
+    }
+  }
+  
+
+ 

@@ -1,0 +1,42 @@
+
+//*variables thème parent avec retour d'erreur*/
+
+@import "variables/breakpoints.scss";
+
+//*colors*/
+
+@import "variables/colors.scss";
+
+//*Header menu burger et apparition*/
+
+@import "layouts/header.scss";
+
+//*Header intégration et animations des têtes de chats et des fleurs*/
+
+@import "layouts/header-animation.scss";
+
+//*animation des fleurs front-page*/
+
+@import "layouts/front-page.scss";
+
+//*section nomination*/
+
+@import "layouts/nomination.scss";
+
+//*suppression des fleurs du footer*/
+
+@import "layouts/footer.scss";
+
+
+//*animation des titres des sections*/
+
+@import "layouts/slideUp.scss";
+
+
+//*carrousel des characters*/
+
+@import "layouts/swiper.scss";
+
+//*image de fond de l'article "lieu" et nuages, dans la section story*/
+
+@import "layouts/story.scss";
